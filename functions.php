@@ -10,4 +10,5 @@ add_action( 'wp_enqueue_scripts','load_scripts');
 register_nav_menus( array(
     'main_menu' =>  'Main Menu',
     'social_menu' =>'Social Menu',
+    'footer_menu' => 'Footer Menu',
 ) );
