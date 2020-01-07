@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<img class="img-fluid" src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
 	<div class="content-area">
 		<main>
 			<section class="slide">
@@ -25,15 +26,15 @@
 
 							 ?>
 
-							<article>
-								<h2><?php the_title(); ?></h2>
-								<p>Posted in <?php echo get_the_date() .' ';?>by <?php the_author_posts_link(); ?></p>
-								<p>Categories: <?php the_category( ' ' ); ?></p>
-								<p><?php the_tags( 'Tags: ', ', ' ); ?></p>
-								<p><?php the_content(); ?></p>
-							</article>
+							<!--
+									add here get_template_part();
+							-->	
+
 
 							 <?php 
+
+							echo get_template_part( 'template-parts/content');
+
 							 endwhile;
 							 else: 
 							  ?>

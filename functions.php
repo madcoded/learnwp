@@ -7,8 +7,27 @@ function load_scripts(){
 }
 add_action( 'wp_enqueue_scripts','load_scripts');
 
-register_nav_menus( array(
-    'main_menu' =>  'Main Menu',
-    'social_menu' =>'Social Menu',
-    'footer_menu' => 'Footer Menu',
-) );
+// Main configuration function
+function learnwp_config(){
+
+	// Registering our menus
+
+    register_nav_menus( array(
+        'main_menu' =>  'Main Menu',
+        'social_menu' =>'Social Menu',
+        'footer_menu' => 'Footer Menu',
+    ) );
+
+
+    // Registering our custom header
+    $args = array(
+		'height' => 225,
+		'width' => 1920
+	);
+    add_theme_support( 'custom-header', $args );
+    
+    //adding post thumbnail support
+    add_theme_support( 'post-thumbnails' );
+
+}
+add_action( 'after_setup_theme', 'learnwp_config', 0 );
