@@ -1,14 +1,10 @@
 <article <?php post_class( array( 'class' => 'featured' ) ); ?>>
-
+	
 	<div class="thumbnail">
-        <a href="<?php the_permalink( ); ?>">
-            <?php the_post_thumbnail( 'large', array( 'class' => 'img-fluid' ) ); ?>
-        </a>
-    </div>
-    
-    <a href="<?php the_permalink( ); ?>">
-        <h2><?php the_title(); ?></h2>
-    </a>
+		<a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'large', array( 'class' => 'img-fluid' ) ); ?></a>
+	</div>
+
+	<a href="<?php the_permalink(); ?>"><h2><?php the_title(); ?></h2></a>
 	
 	<div class="meta-info">
 		<p>

@@ -3,7 +3,7 @@
 		<main>
 			<section class="slide">
 				<div class="container">
-					<div class="row">Slide</div>
+					<div class="row"><?php motoPressSlider( "home-slider" ) ?></div>
 				</div>
 			</section>
 			<section class="services">
@@ -60,52 +60,54 @@
 								
 						</aside>
 						<div class="news col-md-9">
-						<div class="continer">
+						<div class="container">
 							<div class="row">
-								<?php
-								//First Loop for Latest Post
-									$featured = new WP_Query( 'post_type=post&posts_per_page=1&cat=14,9' );
-									
-										if($featured->have_posts( )):
-											while($featured->have_posts( )):
-												$featured->the_post();	
+								<?php 
+
+								// First Loop
+								$featured = new WP_Query( 'post_type=post&posts_per_page=1&cat=4,11' );
+
+								if( $featured->have_posts() ):
+									while( $featured->have_posts() ): 
+										$featured->the_post();
 								?>
-								
-								<div class="col-12">
-									<?php get_template_part( '/template-parts/content', 'featured'); ?>			
 
-								</div>
+									<div class="col-12">
+										<?php get_template_part( 'template-parts/content', 'featured' ); ?>
+									</div>
+
 								<?php
-											endWhile;
-											wp_reset_postdata();
-										endif;	
-								
-							//Second Loop for Latest Post
-							$args = array(
-								'post_tyepe' => 'post',
-								'posts_per_page' => '2',
-								'category__not_in' => array(12,8),
-								'category__in' => array(14,9),
-								'offset' => 1,
-							);
-							$secondary = new WP_Query( $args);
-								
-								if($secondary->have_posts( )):
-									while($secondary->have_posts( )):
-										$secondary->the_post();	
-							?>
-							
-							<div class="col-sm-6">
-								<?php get_template_part( '/template-parts/content', 'secondary'); ?>			
-
-							</div>
-							<?php
-									endWhile;
+									endwhile;
 									wp_reset_postdata();
-								endif;	
-							?>
+								endif;
+
+								// Second Loop
+								$args = array(
+									'post_type' => 'post',
+									'posts_per_page' => 2,
+									'category__not_in' => array( 8 ),
+									'category__in' => array( 4, 11 ),
+									'offset' => 1
+								);
+
+								$secondary = new WP_Query( $args );
+
+								if( $secondary->have_posts() ):
+									while( $secondary->have_posts() ): 
+										$secondary->the_post();
+								?>
+
+									<div class="col-sm-6">
+										<?php get_template_part( 'template-parts/content', 'secondary' ); ?>
+									</div>
+
+								<?php
+									endwhile;
+									wp_reset_postdata();
+								endif;
 
 
+								?>								
 							</div>
 						</div>
 
@@ -114,9 +116,12 @@
 				</div>
 			</section>
 			<section class="map">
-				<div class="container">
-					<div class="row">Map</div>
-				</div>				
+						<iframe
+						  width="100%"
+						  height="350"
+						  frameborder="0" style="border:0"
+						  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB3bKvKFfQQJE9FEj1jvrraw1XADCT-Q_s&q=Space+Needle,Seattle+WA&zoom=15" allowfullscreen>
+						</iframe>						
 			</section>
 		</main>
 	</div>

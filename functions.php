@@ -27,6 +27,7 @@ function learnwp_config(){
 	add_theme_support( 'custom-header', $args );
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'post-formats', array( 'video', 'image') );
+	add_theme_support( 'title-tag' );
 
 }
 add_action( 'after_setup_theme', 'learnwp_config', 0 );
@@ -56,22 +57,17 @@ function learnwp_sidebars(){
 			'after_title' => '</h2>'
 		)
 	);	
-
-
-	register_sidebar( 
+	register_sidebar(
 		array(
-			'name' => 'Services 1',
+			'name' => 'Service 1',
 			'id' => 'services-1',
-			'description' => 'First Service Area',
+			'description' => 'First Services Area. ',
 			'before_widget' => '<div class="widget-wrapper">',
 			'after_widget' => '</div>',
 			'before_title' => '<h2 class="widget-title">',
 			'after_title' => '</h2>'
-
-		) 
+		)
 	);
-
-
 	register_sidebar(
 		array(
 			'name' => 'Service 2',
@@ -93,7 +89,16 @@ function learnwp_sidebars(){
 			'before_title' => '<h2 class="widget-title">',
 			'after_title' => '</h2>'
 		)
-	);	
-
-
-}//register Sidebar ends here
+	);
+	register_sidebar(
+		array(
+			'name' => 'Social Media Icons',
+			'id' => 'social-media',
+			'description' => 'Social Media Icons Widget Area. Drag and drop your widgets here. ',
+			'before_widget' => '<div class="widget-wrapper">',
+			'after_widget' => '</div>',
+			'before_title' => '<h2 class="widget-title">',
+			'after_title' => '</h2>'
+		)
+	);								
+}
