@@ -2,20 +2,13 @@
 <img class="img-fluid" src="<?php header_image(); ?>" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="" />
 	<div class="content-area">
 		<main>
-			<section class="slide">
-				<div class="container">
-					<div class="row">Slide</div>
-				</div>
-			</section>
-			<section class="services">
-				<div class="container">
-					<div class="row">Services</div>
-				</div>				
-			</section>
 			<section class="middle-area">
 				<div class="container">
 					<div class="row">
-						<aside class="sidebar col-md-3">Sidebar</aside>
+						<aside class="sidebar col-md-3 h-100">
+							<!--sidebar-->
+							<?php echo get_sidebar('blog');?>
+						</aside>
 						<div class="news col-md-9">
 							<?php 
 
@@ -24,18 +17,20 @@
 								// While have posts, show them to us
 								while( have_posts() ): the_post();
 
-							 ?>
-
-							<!--
-									add here get_template_part();
-							-->	
-
-
-							 <?php 
-
-							echo get_template_part( 'template-parts/content');
+							echo get_template_part( 'template-parts/content', get_post_format( ));
 
 							 endwhile;
+							?>
+							<!--Pagination-->
+							<div class="row">
+								<div class="pages col-md-6 text-left">
+							 		<?php previous_posts_link("<< Newer Post" ); ?>
+								</div>
+								<div class="pages col-md-6 text-right">
+									<?php next_posts_link("Older Post >>" ); ?>
+							</div>				
+							
+							<?php
 							 else: 
 							  ?>
 
@@ -46,11 +41,6 @@
 						</div>							
 					</div>
 				</div>
-			</section>
-			<section class="map">
-				<div class="container">
-					<div class="row">Map</div>
-				</div>				
 			</section>
 		</main>
 	</div>

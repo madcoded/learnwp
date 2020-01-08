@@ -1,6 +1,6 @@
 <article <?php post_class(); ?>>
 <?php echo get_post_format( );?>
-
+	
 	<a href="<?php the_permalink( ); ?>">
         <h2><?php the_title(); ?></h2>
     </a>
@@ -11,6 +11,8 @@
         </a>
     </div>
 
+	
+	
 	<div class="meta-info">
 		<p>Posted in <?php echo get_the_date(); ?> by <?php the_author_posts_link(); ?></p>
 		<p>Categories: <?php the_category( ' ' ); ?></p>
