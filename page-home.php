@@ -49,7 +49,7 @@
 			<section class="middle-area">
 				<div class="container">
 					<div class="row">
-						<aside class="sidebar col-md-3 h-100">
+						<aside class="sidebar col-md-4 h-100">
 
 							<?php 
 							
@@ -59,13 +59,13 @@
 							?>
 								
 						</aside>
-						<div class="news col-md-9">
+						<div class="news col-md-8">
 						<div class="container">
 							<div class="row">
 								<?php 
 
 								// First Loop
-								$featured = new WP_Query( 'post_type=post&posts_per_page=1&cat=4,11' );
+								$featured = new WP_Query( 'post_type=post&posts_per_page=1&cat=14,9' );
 
 								if( $featured->have_posts() ):
 									while( $featured->have_posts() ): 
@@ -86,7 +86,7 @@
 									'post_type' => 'post',
 									'posts_per_page' => 2,
 									'category__not_in' => array( 8 ),
-									'category__in' => array( 4, 11 ),
+									'category__in' => array( 14, 9 ),
 									'offset' => 1
 								);
 
@@ -116,12 +116,19 @@
 				</div>
 			</section>
 			<section class="map">
-						<iframe
-						  width="100%"
-						  height="350"
-						  frameborder="0" style="border:0"
-						  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB3bKvKFfQQJE9FEj1jvrraw1XADCT-Q_s&q=Space+Needle,Seattle+WA&zoom=15" allowfullscreen>
-						</iframe>						
+				<?php 
+					$key = get_theme_mod( 'set_map_apikey');
+					$address =urlencode( get_theme_mod( 'set_map_address'));
+					$zoom = get_theme_mod( 'set_map_zoom');;
+					
+
+				?>
+				<iframe
+					width="100%"
+					height="350"
+					frameborder="0" style="border:0"
+					src="https://www.google.com/maps/embed/v1/place?key=<?php echo $key; ?>&q=<?php echo $address; ?>&zoom=<?php echo $zoom; ?>" allowfullscreen>
+				</iframe>						
 			</section>
 		</main>
 	</div>
